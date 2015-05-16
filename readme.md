@@ -42,8 +42,9 @@ $ npm-email --help
 
 ## Related
 
-- [`npm-keyword`](https://github.com/sindresorhus/npm-keyword) - Get a list of npm packages with a certain keyword
-- [`package-json`](https://github.com/sindresorhus/package-json) - Get the package.json of a package from the npm registry
+- [npm-keyword](https://github.com/sindresorhus/npm-keyword) - Get a list of npm packages with a certain keyword
+- [package-json](https://github.com/sindresorhus/package-json) - Get the package.json of a package from the npm registry
+- [npm-user](https://github.com/sindresorhus/npm-user) - Get user info of a npm user
 
 
 ## License
