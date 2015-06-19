@@ -11,7 +11,7 @@ var cli = meow({
 		'Example',
 		'  $ npm-email sindresorhus',
 		'  sindresorhus@gmail.com'
-	].join('\n')
+	]
 });
 
 var username = cli.input[0];
