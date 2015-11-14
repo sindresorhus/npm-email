@@ -33,7 +33,7 @@
     "get"
   ],
   "dependencies": {
-    "got": "^3.0.0",
+    "got": "^5.1.0",
     "meow": "^3.3.0",
     "registry-url": "^3.0.0"
   },

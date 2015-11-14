@@ -10,7 +10,7 @@ module.exports = function (username, cb) {
 	var url = registryUrl() + '-/user/org.couchdb.user:' + username;
 
 	got(url, {json: true}, function (err, data) {
-		if (err && err.code === 404) {
+		if (err && err.statusCode === 404) {
 			cb(new Error('User doesn\'t exist'));
 			return;
 		}
