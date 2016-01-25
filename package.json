@@ -1,7 +1,7 @@
 {
   "name": "npm-email",
   "version": "1.1.0",
-  "description": "Get the email of a npm user",
+  "description": "Get the email of an npm user",
   "license": "MIT",
   "repository": "sindresorhus/npm-email",
   "author": {

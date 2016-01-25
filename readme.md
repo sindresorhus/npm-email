@@ -1,6 +1,6 @@
 # npm-email [![Build Status](https://travis-ci.org/sindresorhus/npm-email.svg?branch=master)](https://travis-ci.org/sindresorhus/npm-email)
 
-> Get the email of a npm user
+> Get the email of an npm user
 
 
 ## Install
@@ -44,7 +44,7 @@ $ npm-email --help
 
 - [npm-keyword](https://github.com/sindresorhus/npm-keyword) - Get a list of npm packages with a certain keyword
 - [package-json](https://github.com/sindresorhus/package-json) - Get the package.json of a package from the npm registry
-- [npm-user](https://github.com/sindresorhus/npm-user) - Get user info of a npm user
+- [npm-user](https://github.com/sindresorhus/npm-user) - Get user info of an npm user
 
 
 ## License

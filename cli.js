@@ -17,7 +17,7 @@ var cli = meow({
 var username = cli.input[0];
 
 if (!username) {
-	console.error('Please supply a npm username');
+	console.error('Please supply an npm username');
 	process.exit(1);
 }
 
