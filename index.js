@@ -1,25 +1,21 @@
 'use strict';
-var got = require('got');
-var registryUrl = require('registry-url');
+const got = require('got');
+const registryUrl = require('registry-url');
 
-module.exports = function (username, cb) {
+module.exports = username => {
 	if (typeof username !== 'string') {
-		throw new Error('username required');
+		return Promise.reject(new Error('username required'));
 	}
 
-	var url = registryUrl() + '-/user/org.couchdb.user:' + username;
+	const url = `${registryUrl()}-/user/org.couchdb.user:${username}`;
 
-	got(url, {json: true}, function (err, data) {
-		if (err && err.statusCode === 404) {
-			cb(new Error('User doesn\'t exist'));
-			return;
-		}
+	return got(url, {json: true})
+		.then(res => res.body.email)
+		.catch(err => {
+			if (err && err.statusCode === 404) {
+				throw new Error('User doesn\'t exist');
+			}
 
-		if (err) {
-			cb(err);
-			return;
-		}
-
-		cb(null, data.email);
-	});
+			throw err;
+		});
 };

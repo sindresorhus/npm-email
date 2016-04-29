@@ -1,31 +1,22 @@
 #!/usr/bin/env node
 'use strict';
-var meow = require('meow');
-var npmEmail = require('./');
+const meow = require('meow');
+const npmEmail = require('./');
 
-var cli = meow({
-	help: [
-		'Usage',
-		'  $ npm-email <username>',
-		'',
-		'Example',
-		'  $ npm-email sindresorhus',
-		'  sindresorhus@gmail.com'
-	]
-});
+const cli = meow(`
+	Usage
+	  $ npm-email <username>
 
-var username = cli.input[0];
+	Example
+	  $ npm-email sindresorhus
+	  sindresorhus@gmail.com
+`);
+
+const username = cli.input[0];
 
 if (!username) {
 	console.error('Please supply an npm username');
 	process.exit(1);
 }
 
-npmEmail(username, function (err, email) {
-	if (err) {
-		console.error(err.message);
-		process.exit(1);
-	}
-
-	console.log(email);
-});
+npmEmail(username).then(console.log);
