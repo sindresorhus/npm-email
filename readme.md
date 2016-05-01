@@ -13,13 +13,26 @@ $ npm install --save npm-email
 ## Usage
 
 ```js
-var npmEmail = require('npm-email');
+const npmEmail = require('npm-email');
 
-npmEmail('sindresorhus', function (err, email) {
+npmEmail('sindresorhus').then(email => {
 	console.log(email);
 	//=> 'sindresorhus@gmail.com'
 });
 ```
+
+
+## API
+
+### npmEmail(username)
+
+Returns a promise for the user's email address.
+
+#### username
+
+Type: `string`
+
+Npm username to look up.
 
 
 ## CLI
@@ -49,4 +62,4 @@ $ npm-email --help
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)

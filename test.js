@@ -1,12 +1,15 @@
-'use strict';
-var test = require('ava');
-var npmEmail = require('./');
+import test from 'ava';
+import m from './';
 
-test(function (t) {
-	t.plan(1);
+test('invalid input', t => {
+	t.throws(m(1), 'username required');
+});
 
-	npmEmail('sindresorhus', function (err, email) {
-		t.assert(!err, err);
-		t.assert(email === 'sindresorhus@gmail.com');
-	});
+test('unknown username', t => {
+	const randomName = `asdasfgrgafadsgaf${Math.random().toString().slice(2)}`;
+	t.throws(m(randomName), 'User doesn\'t exist');
+});
+
+test('valid username', async t => {
+	t.is(await m('sindresorhus'), 'sindresorhus@gmail.com');
 });
