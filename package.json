@@ -9,7 +9,6 @@
     "email": "sindresorhus@gmail.com",
     "url": "sindresorhus.com"
   },
-  "bin": "cli.js",
   "engines": {
     "node": ">=4"
   },
@@ -17,24 +16,20 @@
     "test": "xo && ava"
   },
   "files": [
-    "index.js",
-    "cli.js"
+    "index.js"
   ],
   "keywords": [
-    "cli-app",
-    "cli",
-    "bin",
     "npm",
-    "registry",
-    "json",
+    "email",
+    "address",
     "user",
     "username",
-    "email",
+    "registry",
+    "json",
     "get"
   ],
   "dependencies": {
     "got": "^6.3.0",
-    "meow": "^3.3.0",
     "registry-url": "^3.0.0"
   },
   "devDependencies": {

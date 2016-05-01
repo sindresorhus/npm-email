@@ -7,7 +7,7 @@ test('invalid input', t => {
 
 test('unknown username', t => {
 	const randomName = `asdasfgrgafadsgaf${Math.random().toString().slice(2)}`;
-	t.throws(m(randomName), 'User doesn\'t exist');
+	t.throws(m(randomName), `User ${randomName} doesn't exist`);
 });
 
 test('valid username', async t => {

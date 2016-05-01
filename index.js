@@ -13,7 +13,7 @@ module.exports = username => {
 		.then(res => res.body.email)
 		.catch(err => {
 			if (err && err.statusCode === 404) {
-				throw new Error('User doesn\'t exist');
+				throw new Error(`User ${username} doesn't exist`);
 			}
 
 			throw err;
