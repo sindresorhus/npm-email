@@ -1,13 +1,14 @@
 'use strict';
 const got = require('got');
 const registryUrl = require('registry-url');
+const { URL } = require('url');
 
 module.exports = username => {
 	if (typeof username !== 'string') {
 		return Promise.reject(new Error('username required'));
 	}
 
-	const url = `${registryUrl()}-/user/org.couchdb.user:${username}`;
+	const url = new URL(`${registryUrl()}-/user/org.couchdb.user:${username}`);
 
 	return got(url, {json: true})
 		.then(res => res.body.email)
