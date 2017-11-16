@@ -1,13 +1,13 @@
 import test from 'ava';
 import m from './';
 
-test('invalid input', t => {
-	t.throws(m(1), 'username required');
+test('invalid input', async t => {
+	await t.throws(m(1), 'username required');
 });
 
-test('unknown username', t => {
+test('unknown username', async t => {
 	const randomName = `asdasfgrgafadsgaf${Math.random().toString().slice(2)}`;
-	t.throws(m(randomName), `User ${randomName} doesn't exist`);
+	await t.throws(m(randomName));
 });
 
 test('valid username', async t => {
