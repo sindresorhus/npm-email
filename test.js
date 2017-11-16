@@ -13,3 +13,7 @@ test('unknown username', t => {
 test('valid username', async t => {
 	t.is(await m('sindresorhus'), 'sindresorhus@gmail.com');
 });
+
+test('valid username with special char', async t => {
+	t.is(await m(`lukeramsden'`), 'lukeramsden8@gmail.com');
+});
