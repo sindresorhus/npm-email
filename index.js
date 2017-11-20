@@ -8,7 +8,8 @@ module.exports = username => {
 		return Promise.reject(new Error('username required'));
 	}
 
-	const url = new URL(`${registryUrl()}-/user/org.couchdb.user:${username}`);
+	const urlStr = `${registryUrl()}-/user/org.couchdb.user:${username}`;
+	const url = URL ? new URL(urlStr) : urlStr;
 
 	return got(url, {json: true})
 		.then(res => res.body.email)
