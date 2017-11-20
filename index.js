@@ -3,21 +3,21 @@ const {URL} = require('url');
 const got = require('got');
 const registryUrl = require('registry-url');
 
-module.exports = username => {
+module.exports = async username => {
 	if (typeof username !== 'string') {
-		return Promise.reject(new Error('username required'));
+		throw new TypeError('Username required');
 	}
 
-	const urlStr = `${registryUrl()}-/user/org.couchdb.user:${username}`;
-	const url = URL ? new URL(urlStr) : urlStr;
+	const url = new URL(`${registryUrl()}-/user/org.couchdb.user:${username}`);
 
-	return got(url, {json: true})
-		.then(res => res.body.email)
-		.catch(err => {
-			if (err && err.statusCode === 404) {
-				throw new Error(`User ${username} doesn't exist`);
-			}
+	try {
+		const {body} = await got(url, {json: true});
+		return body.email;
+	} catch (err) {
+		if (err && err.statusCode === 404) {
+			throw new Error(`User ${username} doesn't exist`);
+		}
 
-			throw err;
-		});
+		throw err;
+	}
 };

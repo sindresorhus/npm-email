@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save npm-email
+$ npm install npm-email
 ```
 
 
@@ -15,10 +15,10 @@ $ npm install --save npm-email
 ```js
 const npmEmail = require('npm-email');
 
-npmEmail('sindresorhus').then(email => {
-	console.log(email);
+(async () => {
+	console.log(await npmEmail('sindresorhus'));
 	//=> 'sindresorhus@gmail.com'
-});
+})();
 ```
 
 
