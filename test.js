@@ -7,7 +7,7 @@ test('invalid input', async t => {
 
 test('unknown username', async t => {
 	const randomName = `asdasfgrgafadsgaf${Math.random().toString().slice(2)}`;
-	await t.throws(m(randomName));
+	await t.throws(m(randomName), `User ${randomName} doesn't exist`);
 });
 
 test('valid username', async t => {
