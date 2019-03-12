@@ -1,5 +1,4 @@
 'use strict';
-
 const {URL} = require('url');
 const got = require('got');
 const registryUrl = require('registry-url');
