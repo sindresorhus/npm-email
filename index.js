@@ -23,4 +23,5 @@ const npmEmail = async username => {
 };
 
 module.exports = npmEmail;
+// TODO: Remove this for the next major release
 module.exports.default = npmEmail;

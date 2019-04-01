@@ -1,4 +1,4 @@
-import {expectType} from 'tsd-check';
-import npmEmail from '.';
+import {expectType} from 'tsd';
+import npmEmail = require('.');
 
 expectType<Promise<string>>(npmEmail('sindresorhus'));
