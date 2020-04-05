@@ -1,14 +1,21 @@
 'use strict';
 const {URL} = require('url');
 const got = require('got');
-const registryUrl = require('registry-url');
+const getRegistryUrl = require('registry-url');
 
 const npmEmail = async username => {
 	if (typeof username !== 'string') {
 		throw new TypeError('Username required');
 	}
 
-	const url = new URL(`${registryUrl()}-/user/org.couchdb.user:${username}`);
+	let registryUrl = getRegistryUrl();
+
+	// `npmjs.com` no longer supports the endpoint we need, so we use a mirror.
+	if (registryUrl.trim().replace(/\/$/, '') === 'https://registry.npmjs.org') {
+		registryUrl = 'https://r.cnpmjs.org/';
+	}
+
+	const url = new URL(`${registryUrl}-/user/org.couchdb.user:${username}`);
 
 	try {
 		const {body} = await got(url, {json: true});
