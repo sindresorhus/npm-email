@@ -2,38 +2,32 @@
 
 > Get the email of an npm user
 
-
 ## Install
 
+```sh
+npm install npm-email
 ```
-$ npm install npm-email
-```
-
 
 ## Usage
 
 ```js
-const npmEmail = require('npm-email');
+import npmEmail from 'npm-email';
 
-(async () => {
-	console.log(await npmEmail('sindresorhus'));
-	//=> 'sindresorhus@gmail.com'
-})();
+console.log(await npmEmail('sindresorhus'));
+//=> 'sindresorhus@gmail.com'
 ```
-
 
 ## API
 
 ### npmEmail(username)
 
-Returns a promise for the user's email address.
+Returns a promise for the user's email address, or `undefined` if the user does not exist or the email could not be found.
 
 #### username
 
 Type: `string`
 
-npm username to look up.
-
+The npm username to look up.
 
 ## Related
 
@@ -41,8 +35,3 @@ npm username to look up.
 - [npm-keyword](https://github.com/sindresorhus/npm-keyword) - Get a list of npm packages with a certain keyword
 - [package-json](https://github.com/sindresorhus/package-json) - Get the package.json of a package from the npm registry
 - [npm-user](https://github.com/sindresorhus/npm-user) - Get user info of an npm user
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)

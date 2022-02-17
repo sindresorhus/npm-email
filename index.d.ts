@@ -1,26 +1,15 @@
-declare const npmEmail: {
-	/**
-	Get the email of an npm user.
+/**
+Get the email of an npm user.
 
-	@param username - npm username to look up.
-	@returns The user's email address.
+@param username - The npm username to look up.
+@returns The user's email address, or `undefined` if the user does not exist or the email could not be found.
 
-	@example
-	```
-	import npmEmail = require('npm-email');
+@example
+```
+import npmEmail from  npm-email';
 
-	(async () => {
-		console.log(await npmEmail('sindresorhus'));
-		//=> 'sindresorhus@gmail.com'
-	})();
-	```
-	*/
-	(username: string): Promise<string>;
-
-	// TODO: Remove this for the next major release, refactor the whole definition to:
-	// declare function npmEmail(username: string): Promise<string>;
-	// export = npmEmail;
-	default: typeof npmEmail;
-};
-
-export = npmEmail;
+console.log(await npmEmail('sindresorhus'));
+//=> 'sindresorhus@gmail.com'
+```
+*/
+export default function npmEmail(username: string): Promise<string | undefined>;

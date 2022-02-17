@@ -4,13 +4,16 @@
 	"description": "Get the email of an npm user",
 	"license": "MIT",
 	"repository": "sindresorhus/npm-email",
+	"funding": "https://github.com/sponsors/sindresorhus",
 	"author": {
 		"name": "Sindre Sorhus",
 		"email": "sindresorhus@gmail.com",
-		"url": "sindresorhus.com"
+		"url": "https://sindresorhus.com"
 	},
+	"type": "module",
+	"exports": "./index.js",
 	"engines": {
-		"node": ">=8"
+		"node": "^14.17.0 || >=16.0.0"
 	},
 	"scripts": {
 		"test": "xo && ava && tsd"
@@ -30,12 +33,11 @@
 		"get"
 	],
 	"dependencies": {
-		"got": "^9.6.0",
-		"registry-url": "^5.0.0"
+		"got": "^12.0.1"
 	},
 	"devDependencies": {
-		"ava": "^1.4.1",
-		"tsd": "^0.7.1",
-		"xo": "^0.24.0"
+		"ava": "^4.0.1",
+		"tsd": "^0.19.1",
+		"xo": "^0.48.0"
 	}
 }

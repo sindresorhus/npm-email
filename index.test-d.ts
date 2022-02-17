@@ -1,4 +1,4 @@
 import {expectType} from 'tsd';
-import npmEmail = require('.');
+import npmEmail from './index.js';
 
-expectType<Promise<string>>(npmEmail('sindresorhus'));
+expectType<Promise<string | undefined>>(npmEmail('sindresorhus'));

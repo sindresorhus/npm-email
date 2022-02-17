@@ -1,25 +1,28 @@
-'use strict';
-const {URL} = require('url');
-const got = require('got');
-const getRegistryUrl = require('registry-url');
+import got from 'got';
 
-const npmEmail = async username => {
+export default async function npmEmail(username) {
 	if (typeof username !== 'string') {
 		throw new TypeError('Username required');
 	}
 
-	let registryUrl = getRegistryUrl();
-
-	// `npmjs.com` no longer supports the endpoint we need, so we use a mirror.
-	if (registryUrl.trim().replace(/\/$/, '') === 'https://registry.npmjs.org') {
-		registryUrl = 'https://r.cnpmjs.org/';
-	}
-
-	const url = new URL(`${registryUrl}-/user/org.couchdb.user:${username}`);
+	const url = new URL(`https://api.npms.io/v2/search?q=maintainer:${encodeURIComponent(username)}`);
 
 	try {
-		const {body} = await got(url, {json: true});
-		return body.email;
+		const {results} = await got(url).json();
+
+		for (const {package: package_} of results) {
+			const users = [
+				package_.author,
+				package_.publisher,
+				...package_.maintainers,
+			];
+
+			for (const user of users) {
+				if (user?.username === username && user?.email && typeof user.email === 'string') {
+					return user.email;
+				}
+			}
+		}
 	} catch (error) {
 		if (error && error.statusCode === 404) {
 			throw new Error(`User ${username} doesn't exist`);
@@ -27,8 +30,4 @@ const npmEmail = async username => {
 
 		throw error;
 	}
-};
-
-module.exports = npmEmail;
-// TODO: Remove this for the next major release
-module.exports.default = npmEmail;
+}
