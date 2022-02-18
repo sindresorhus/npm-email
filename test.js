@@ -7,5 +7,5 @@ test('invalid input', async t => {
 
 test('valid username', async t => {
 	t.is(await npmEmail('sindresorhus'), 'sindresorhus@gmail.com');
-	t.is(await npmEmail('vdemedes'), 'vdemedes@gmail.com');
+	t.is(await npmEmail('vdemedes'), 'vadimdemedes@hey.com');
 });

@@ -10,6 +10,8 @@ export default async function npmEmail(username) {
 	try {
 		const {results} = await got(url).json();
 
+		results.sort((a, b) => b.package.date.localeCompare(a.package.date));
+
 		for (const {package: package_} of results) {
 			const users = [
 				package_.author,
