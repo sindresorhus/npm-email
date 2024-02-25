@@ -1,14 +1,14 @@
-import got from 'got';
+import ky from 'ky';
 
 export default async function npmEmail(username) {
 	if (typeof username !== 'string') {
 		throw new TypeError('Username required');
 	}
 
-	const url = new URL(`https://api.npms.io/v2/search?q=maintainer:${encodeURIComponent(username)}`);
+	const url = new URL(`https://registry.npmjs.com/-/v1/search?&text=maintainer:${encodeURIComponent(username)}`);
 
 	try {
-		const {results} = await got(url).json();
+		const {objects: results} = await ky(url).json();
 
 		results.sort((a, b) => b.package.date.localeCompare(a.package.date));
 
@@ -20,7 +20,7 @@ export default async function npmEmail(username) {
 			];
 
 			for (const user of users) {
-				if (user?.username === username && user?.email && typeof user.email === 'string') {
+				if (user?.username === username && typeof user?.email === 'string') {
 					return user.email;
 				}
 			}
