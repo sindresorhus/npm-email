@@ -20,7 +20,7 @@ export default async function npmEmail(username) {
 			];
 
 			for (const user of users) {
-				if (user?.username === username && typeof user?.email === 'string') {
+				if (user?.username === username && typeof user?.email === 'string' && user?.email !== '') {
 					return user.email;
 				}
 			}
