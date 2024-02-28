@@ -24,10 +24,8 @@ test('handles 404', async t => {
 		);
 	};
 
-	const {default: npmEmailMocked} = await import('./index.js');
-
 	await t.throwsAsync(
-		npmEmailMocked('nnnope'),
+		npmEmail('nnnope'),
 		{message: 'User `nnnope` could not be found', code: 'ERR_NO_NPM_USER'},
 	);
 
