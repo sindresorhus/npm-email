@@ -11,7 +11,7 @@ export default async function npmEmail(username) {
 		const {objects: results, total} = await ky(url).json();
 
 		if (total === 0) {
-			return undefined;
+			return;
 		}
 
 		results.sort((a, b) => b.package.date.localeCompare(a.package.date));
