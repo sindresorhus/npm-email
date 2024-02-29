@@ -1,6 +1,6 @@
 {
 	"name": "npm-email",
-	"version": "5.0.0",
+	"version": "5.1.0",
 	"description": "Get the email of an npm user",
 	"license": "MIT",
 	"repository": "sindresorhus/npm-email",
