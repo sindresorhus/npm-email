@@ -15,7 +15,7 @@ test('non-existent user', async t => {
 	t.is(await npmEmail('nnnope'), undefined);
 });
 
-test('handles 404', async t => {
+test.serial('handles 404', async t => {
 	const {fetch} = globalThis;
 
 	globalThis.fetch = async () => {
