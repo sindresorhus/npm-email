@@ -8,7 +8,11 @@ export default async function npmEmail(username) {
 	const url = new URL(`https://registry.npmjs.com/-/v1/search?&text=maintainer:${encodeURIComponent(username)}`);
 
 	try {
-		const {objects: results} = await ky(url).json();
+		const {objects: results, total} = await ky(url).json();
+
+		if (total === 0) {
+			return;
+		}
 
 		results.sort((a, b) => b.package.date.localeCompare(a.package.date));
 
@@ -26,8 +30,10 @@ export default async function npmEmail(username) {
 			}
 		}
 	} catch (error) {
-		if (error && error.statusCode === 404) {
-			throw new Error(`User ${username} doesn't exist`);
+		if (error?.response?.status === 404) {
+			const notFoundError = new Error(`User \`${username}\` could not be found`, {cause: error});
+			notFoundError.code = 'ERR_NO_NPM_USER';
+			throw notFoundError;
 		}
 
 		throw error;
